@@ -11,10 +11,17 @@ AS=$(CROSS_COMPILE)as
 LD=$(CROSS_COMPILE)gcc
 GDB=$(CROSS_COMPILE)gdb
 
+# OPENOCD           ?= openocd
+ifdef WSL_DISTRO_NAME
+OPENOCD           ?= openocd.exe
+else
 OPENOCD           ?= openocd
+endif
+
 OPENOCD_DIR       ?= 
 OPENOCD_INTERFACE ?= $(OPENOCD_DIR)interface/stlink-v2.cfg
-OPENOCD_TARGET    ?= target/nrf51_stlink.tcl
+# OPENOCD_TARGET    ?= target/nrf51_stlink.tcl
+OPENOCD_TARGET    ?= target/nrf51.cfg
 OPENOCD_CMDS      ?=
 
 O                 ?= -Os

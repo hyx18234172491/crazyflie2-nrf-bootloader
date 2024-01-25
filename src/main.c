@@ -265,12 +265,12 @@ void mainLoop(void) {
           crtpPacket.datalen = packet->size-1;
         }
         esbReleaseRxPacket(packet);
+
       }
     }
     if (cstate != connect_sb) {
       if (bleCrazyfliesIsPacketReceived()) {
         cstate = connect_ble;
-
         packet = bleCrazyfliesGetRxPacket();
         memcpy(crtpPacket.raw, packet->data, packet->size);
         crtpPacket.datalen = packet->size-1;
@@ -296,6 +296,9 @@ void mainLoop(void) {
             crtpPacket.datalen = slPacket.length-1;
           }
         }
+      }else{
+        crtpPacket.datalen = 0xFFU;
+        continue;
       }
     }
     if (crtpPacket.datalen != 0xFFU) {
@@ -306,12 +309,13 @@ void mainLoop(void) {
           pk->size = crtpPacket.datalen+1;
           esbSendTxPacket(pk);
         }
-      } else if (cstate == connect_ble) {
-        static EsbPacket pk;
-        memcpy(pk.data, crtpPacket.raw, crtpPacket.datalen+1);
-        pk.size = crtpPacket.datalen+1;
-        bleCrazyfliesSendPacket(&pk);
-      }
+      } 
+      // else if (cstate == connect_ble) {
+      //   static EsbPacket pk;
+      //   memcpy(pk.data, crtpPacket.raw, crtpPacket.datalen+1);
+      //   pk.size = crtpPacket.datalen+1;
+      //   bleCrazyfliesSendPacket(&pk);
+      // }
     }
 
     crtpPacket.datalen = 0xFFU;

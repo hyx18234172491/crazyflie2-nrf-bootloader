@@ -298,7 +298,7 @@ void mainLoop(void) {
         }
       }else{
         crtpPacket.datalen = 0xFFU;
-        continue;
+        // continue;
       }
     }
     if (crtpPacket.datalen != 0xFFU) {

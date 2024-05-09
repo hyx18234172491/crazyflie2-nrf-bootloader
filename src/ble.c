@@ -423,12 +423,13 @@ static void on_ble_evt(ble_evt_t * p_ble_evt)
 static void ble_evt_dispatch(ble_evt_t * p_ble_evt)
 {
     //ble_bondmngr_on_ble_evt(p_ble_evt);
-    //ble_leds_on_ble_evt(p_ble_evt);
+    // ble_leds_on_ble_evt(p_ble_evt);
     ble_crazyflies_on_ble_evt(p_ble_evt);
 
     ble_conn_params_on_ble_evt(p_ble_evt);
 
     on_ble_evt(p_ble_evt);
+    // printf("");
 }
 
 

@@ -68,7 +68,7 @@ OBJS += $(NRF51_SDK)/Source/ble/ble_services/ble_srv_common.o
 OBJS += $(NRF51_SDK)/Source/ble/ble_services/ble_dis.o
 OBJS += $(NRF51_SDK)/Source/sd_common/softdevice_handler.o
 OBJS += $(NRF51_SDK)/Source/app_common/app_timer.o
-
+# /root/swarm_flash/crazyflie2-nrf-bootloader/include/nrf/nrf_delay.h
 
 
 CFLAGS += -DBLE_STACK_SUPPORT_REQD -DNRF51
@@ -91,6 +91,7 @@ endif
 OBJS += src/main.o gcc_startup_nrf51.o system_nrf51.o src/button.o
 OBJS += src/systick.o src/ble.o src/ble_crazyflies.o src/esb.o src/timeslot.o
 OBJS += src/bootloader.o src/uart.o src/syslink.o src/crc.o
+OBJS += src/led.o
 
 all: $(PROGRAM).elf $(PROGRAM).bin $(PROGRAM).hex
 	arm-none-eabi-size $(PROGRAM).elf

@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "nrf_gpio.h": "c",
+        "led.h": "c",
+        "nrf_delay.h": "c"
+    }
+}
